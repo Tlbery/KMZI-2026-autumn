@@ -1,9 +1,3 @@
-Отлично! Теперь у вас есть **абсолютно все необходимые данные** для формирования идеального отчёта по Лабораторной работе №4 (Вариант 12). 
-
-Ниже приведён структурированный шаблон итогового отчёта, в который вы можете просто скопировать ваши реальные выводы. Все поля полностью соответствуют требованиям методических указаний.
-
----
-
 # Отчёт по Лабораторной работе №4. Вариант 12
 
 ## 1. Удостоверяющий центр и сертификаты X.509
@@ -11,7 +5,7 @@
 ### Фрагменты вывода `openssl x509 -noout -text`
 
 **Корневой CA (`root.crt`):**
-```text
+```
             X509v3 Basic Constraints: critical
                 CA:TRUE, pathlen:1
             X509v3 Key Usage: critical
@@ -22,7 +16,7 @@
 *Ожидается:* `CA:TRUE, pathlen:1` и `Key Usage: Certificate Sign, CRL Sign`. **Совпадает.**
 
 **Промежуточный CA (`inter.crt`):**
-```text
+```
             X509v3 Basic Constraints: critical
                 CA:TRUE, pathlen:0
             X509v3 Key Usage: critical
@@ -35,7 +29,7 @@
 *Ожидается:* `CA:TRUE, pathlen:0` (запрещает выпуск других CA) и `Key Usage: Certificate Sign, CRL Sign`. **Совпадает.**
 
 **Серверный сертификат (`server.crt`):**
-```text
+```
             X509v3 Basic Constraints: critical
                 CA:FALSE
             X509v3 Key Usage: critical
@@ -74,7 +68,7 @@ server {
 }
 ```
 **Вывод `sudo nginx -t`:**
-```text
+```
 nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful
 ```
@@ -134,7 +128,7 @@ tshark -r ~/lab4/client/handshake.pcap -o tls.keylog_file:$HOME/lab4/client/keys
 *   **SNI:** `localhost`
 *   **SAN в сертификате:** `dNSName: localhost`, `iPAddress: 127.0.0.1`
 *   **Уникальные метки из `keys.log`:**
-    ```text
+    ```
     CLIENT_HANDSHAKE_TRAFFIC_SECRET
     CLIENT_TRAFFIC_SECRET_0
     EXPORTER_SECRET
